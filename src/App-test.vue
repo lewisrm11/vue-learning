@@ -2,17 +2,17 @@
   <div id="app">
     <button @click="message='test de watch'">Button</button>
     <br><br>
-    <label style="background-color: black; color:white">{{printMessage}}</label>
+    <label style="background-color: black; color:white">{{ printMessage }}</label>
     <br><br>
-    <label style="background-color: red; color:white">{{message}}</label>
+    <label style="background-color: red; color:white">{{ message }}</label>
     <br><br>
-    <label style="background-color: blue; color:white">{{watchProp}}</label>
+    <label style="background-color: blue; color:white">{{ watchProp }}</label>
     <br><br>
-    <label style="background-color: pink; color:white">{{computedWatchProp}}</label>
+    <label style="background-color: pink; color:white">{{ computedWatchProp }}</label>
     <br><br>
     <button @click="secuence='computed property / with getter and setter'">Button</button>
     <br><br>
-    <label style="background-color: gray; color:white">{{secuence}}</label>
+    <label style="background-color: gray; color:white">{{ secuence }}</label>
     <br><br>
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
@@ -28,24 +28,24 @@
 import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  data:function () {
+  data:       function () {
     return {
-      one: "One",
-      two: "Two",
-      message: "testtttt",
+      one:       "One",
+      two:       "Two",
+      message:   "testtttt",
       watchProp: ""
     };
   },
-  computed: {
+  computed:   {
     // a computed getter
-    printMessage: function () {
+    printMessage:      function () {
       // `this` points to the vm instance
       return "hello vue".split('').reverse().join('')
     },
     computedWatchProp: function () {
-      return  this.message + " from button but with a computed prop"
+      return this.message + " from button but with a computed prop"
     },
-    secuence: {
+    secuence:          {
       get: function () {
         return this.one + "-" + this.two;
       },
@@ -56,12 +56,12 @@ export default {
       }
     }
   },
-  watch: {
-    message: function() {
+  watch:      {
+    message: function () {
       this.watchProp = this.message + " from button"
     },
   },
-  name: 'App',
+  name:       'App',
   components: {
     HelloWorld
   }

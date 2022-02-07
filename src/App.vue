@@ -34,11 +34,14 @@
                     <div class="row mb-3">
                       <div class="col">
                         <div class="media align-items-center">
-                          <img class="avatar avatar-sm mr-3" src="./assets/front/svg/brands/mailchimp.svg" alt="Image Description">
+                          <img class="avatar avatar-sm mr-3" src="./assets/front/svg/brands/mailchimp.svg"
+                               alt="Image Description">
                           <div class="media-body">
                             <h6 class="mb-0">
                               <a class="text-dark" href="employer.html">{{ item.user }}</a>
-                              <img class="avatar avatar-xss ml-1" src="./assets/front/svg/illustrations/top-vendor.svg" alt="Review rating" data-toggle="tooltip" data-placement="top" title="" data-original-title="Claimed profile">
+                              <img class="avatar avatar-xss ml-1" src="./assets/front/svg/illustrations/top-vendor.svg"
+                                   alt="Review rating" data-toggle="tooltip" data-placement="top" title=""
+                                   data-original-title="Claimed profile">
                             </h6>
                           </div>
                         </div>
@@ -47,12 +50,15 @@
                       <div class="col-auto">
                         <!-- Checkbbox Bookmark -->
                         <div class="custom-control custom-checkbox-bookmark">
-                          <input type="checkbox" id="checkboxBookmark1" class="custom-control-input custom-checkbox-bookmark-input">
+                          <input type="checkbox" id="checkboxBookmark1"
+                                 class="custom-control-input custom-checkbox-bookmark-input">
                           <label class="custom-checkbox-bookmark-label" for="checkboxBookmark1">
-                        <span class="custom-checkbox-bookmark-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Save this job">
+                        <span class="custom-checkbox-bookmark-default" data-toggle="tooltip" data-placement="top"
+                              title="" data-original-title="Save this job">
                           <i class="far fa-star"></i>
                         </span>
-                            <span class="custom-checkbox-bookmark-active" data-toggle="tooltip" data-placement="top" title="" data-original-title="Saved">
+                            <span class="custom-checkbox-bookmark-active" data-toggle="tooltip" data-placement="top"
+                                  title="" data-original-title="Saved">
                           <i class="fas fa-star"></i>
                         </span>
                           </label>
@@ -63,7 +69,7 @@
                     <!-- End Row -->
 
                     <h3 class="mb-3">
-                      <a class="text-dark" href="employer.html">{{item.descripcion}}</a>
+                      <a class="text-dark" href="employer.html">{{ item.descripcion }}</a>
                     </h3>
 
                     <span class="d-block font-size-1 text-body mb-1">$125k-$135k yearly</span>
@@ -86,10 +92,8 @@
         </div>
       </div>
     </div>
-
-
+    <button @click="add()">Add</button>
     <Empty></Empty>
-
 
 
   </main>
@@ -102,35 +106,21 @@ export default {
   data:       function () {
     return {
       descripcion: "",
-      items:       [
-        {
-          id:          1,
-          descripcion: "Some representative placeholder content, with some information about this user. Imagine this being some sort of status update, perhaps?",
-          user:        "@user1"
-        },
-        {
-          id:          2,
-          descripcion: "Some more representative placeholder content, related to this other user. Another status update, perhaps.",
-          user:        "@user2"
-        },
-        {
-          id:          3,
-          descripcion: "This user also gets some representative placeholder content. Maybe they did something interesting, and you really want to highlight this in the recent updates.",
-          user:        "@user3"
-        }
-      ]
     }
   },
+  computed:   {
+    items() {
+      return this.$store.state.items;
+    },
+  },
   methods:    {
-    addItem: function () {
-      this.items.push({
-        id:          this.items.length,
-        descripcion: `${this.descripcion} ${this.items.length}`,
-        user:        "@user1"
-      });
-
-      this.descripcion = "";
-    }
+    add() {
+      this.$store.dispatch('addIAction', {
+        id:          this.$store.state.items.length + 1,
+        descripcion: this.descripcion,
+        user:        "@user9"
+      })
+    },
   },
   components: {
     Empty

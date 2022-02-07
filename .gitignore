@@ -24,3 +24,6 @@ pnpm-debug.log*
 
 src/assets/front
 public/assets/
+
+package-lock.json
+yarn.lock
