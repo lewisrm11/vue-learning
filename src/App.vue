@@ -93,13 +93,24 @@
       </div>
     </div>
     <button @click="add()">Add</button>
-    <Empty></Empty>
 
+    <p>
+      <!-- use router-link component for navigation. -->
+      <!-- specify the link by passing the `to` prop. -->
+      <!-- `<router-link>` will be rendered as an `<a>` tag by default -->
+      <router-link to="/foo">Go to Foo</router-link>
+      <router-link to="/bar">Go to Bar</router-link>
+      <router-link to="/empty">Go to empty</router-link>
+    </p>
+    <!-- route outlet -->
+    <!-- component matched by the route will render here -->
+    routes
+    <router-view>routes</router-view>
+    ---routes
 
   </main>
 </template>
 <script>
-import Empty from "./components/Empty";
 
 export default {
   name:       "App",
@@ -122,8 +133,5 @@ export default {
       })
     },
   },
-  components: {
-    Empty
-  }
 }
 </script>
